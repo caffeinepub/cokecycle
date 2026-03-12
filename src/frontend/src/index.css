@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.08 0.012 148;
+    --foreground: 0.95 0.02 148;
+    --card: 0.12 0.015 148;
+    --card-foreground: 0.95 0.02 148;
+    --popover: 0.11 0.015 148;
+    --popover-foreground: 0.95 0.02 148;
+    --primary: 0.72 0.21 145;
+    --primary-foreground: 0.08 0.012 148;
+    --secondary: 0.63 0.22 22;
+    --secondary-foreground: 0.98 0.005 0;
+    --muted: 0.17 0.01 148;
+    --muted-foreground: 0.6 0.02 148;
+    --accent: 0.16 0.012 148;
+    --accent-foreground: 0.95 0.02 148;
+    --destructive: 0.63 0.22 22;
+    --destructive-foreground: 0.98 0.005 0;
+    --border: 0.22 0.012 148;
+    --input: 0.18 0.012 148;
+    --ring: 0.72 0.21 145;
+    --radius: 0.75rem;
+    --chart-1: 0.72 0.21 145;
+    --chart-2: 0.63 0.22 22;
+    --chart-3: 0.75 0.18 200;
+    --chart-4: 0.8 0.15 60;
+    --chart-5: 0.65 0.2 280;
+    --sidebar: 0.1 0.012 148;
+    --sidebar-foreground: 0.95 0.02 148;
+    --sidebar-primary: 0.72 0.21 145;
+    --sidebar-primary-foreground: 0.08 0.012 148;
+    --sidebar-accent: 0.16 0.012 148;
+    --sidebar-accent-foreground: 0.95 0.02 148;
+    --sidebar-border: 0.22 0.012 148;
+    --sidebar-ring: 0.72 0.21 145;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: radial-gradient(
+        ellipse 80% 60% at 50% -20%,
+        oklch(0.2 0.06 148 / 0.4) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 80%,
+        oklch(0.15 0.04 148 / 0.2) 0%,
+        transparent 50%
+      );
+    background-attachment: fixed;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: oklch(0.14 0.012 148 / 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.3 0.015 148 / 0.3);
+  }
+  .glass-hover {
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s
+      ease;
+  }
+  .glass-hover:hover {
+    background: oklch(0.18 0.015 148 / 0.7);
+    border-color: oklch(0.4 0.02 148 / 0.4);
+    box-shadow: 0 8px 32px oklch(0.72 0.21 145 / 0.08);
+  }
+  .glow-green {
+    box-shadow: 0 0 20px oklch(0.72 0.21 145 / 0.25), 0 0 60px
+      oklch(0.72 0.21 145 / 0.1);
+  }
+  .glow-red {
+    box-shadow: 0 0 20px oklch(0.63 0.22 22 / 0.25), 0 0 60px
+      oklch(0.63 0.22 22 / 0.1);
+  }
+  .text-gradient-green {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.21 145),
+      oklch(0.85 0.18 160)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-mixed {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.21 145) 0%,
+      oklch(0.85 0.18 160) 50%,
+      oklch(0.8 0.2 145) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .noise-bg {
+    position: relative;
+  }
+  .noise-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
